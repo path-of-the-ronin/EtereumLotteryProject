@@ -1,0 +1,34 @@
+- Custom Node project from scratch without using _Truffle_.
+	- Includes: 
+		- Contract Creation
+		- Local Testing using _Mocha_(generic test lib. for use with JS projects)
+		- Deployment to _Rinkeby_ test network
+	- Steps: 
+		- Set up the _Solidity_ compiler to build contracts
+		- Set up custom _Mocha_ test runner to test _Solidity_ code
+		- Set up deploy script to compile and deploy contracts
+
+	- Notes:
+		- ```npm init``` inside directory
+		- ```npm install --save solc```
+		- Need to read the contents of the file from our hard drive therefore _path_ and _fs_ libs used, because the _Node_ engine will attemp to execute the file as though it were _JS_ code
+		- Compilation resuts in an _contracts_ object
+		- _bytecode_ is the object to be deployed on the Ethereum network (stored and executed on the Blockchain)
+		- _interface_ is the contract _ABI_ (communication layer between _Solidity_ and _JS_; specifies different methods)
+		- Use the _bytecode_ for deployment on the local test network on machine using _ganache-cli_
+		- Use _ABI_ and feed it into _Web3_ (lib to get programmatic access to a deployed contract on the Blockchain)
+		- ```npm install --save mocha ganache-cli web3@1.0.0-beta.26``` support for promises present in this version
+		- ```npm run test```
+		- Running Contract Functions :- Calling a function and Sending a transaction to a function
+			- Cannot modify contract data :: Can do so
+			- Can return data :: Takes time to execute
+			- Runs relatively instantly :: Returns the transaction hash
+			- Free :: Costs money
+		- _Provider_ is the communication layer between _web3_ instance and the Ethereum network. We provide the _Infura API_ (for access to hosted Ethereum node) and the Account Mnemonic (to unlock an account) to the provider
+		```npm install --save truffle-hdwallet-provider```
+		- _rinkeby.etherscan.io_ for list of all transactions that flow into the _Rinkeby_ network
+		- To interact with the deployed contract:
+			- Go to _remix.ethereum.io_
+			- Select _Injected Web3_
+			- Provide address to interact with the deployed instance
+			- Metamask confirmation
